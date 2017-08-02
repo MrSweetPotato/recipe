@@ -82,7 +82,7 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="threadsafe_queue\threadsafe_queue.h" />
+    <ClInclude Include="threadsafe_queue\BlockingQueue.h" />
     <ClInclude Include="threadsafe_queue\nocopyable.h" />
   </ItemGroup>
   <ItemGroup>
