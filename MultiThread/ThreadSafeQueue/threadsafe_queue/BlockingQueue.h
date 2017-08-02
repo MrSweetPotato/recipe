@@ -57,6 +57,12 @@ public:
 		}
 	}
 
+	size_t Size(void)
+	{
+		std::lock_guard<std::mutex> lock(m_Mutex);
+		return m_Queue.size();
+	}
+
 private:
 	bool IsNeedStop(void) const { return m_StopFlag; }
 

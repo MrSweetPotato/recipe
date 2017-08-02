@@ -84,6 +84,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="threadsafe_queue\BlockingQueue.h" />
     <ClInclude Include="threadsafe_queue\nocopyable.h" />
+    <ClInclude Include="threadsafe_queue\BoundBlockingQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

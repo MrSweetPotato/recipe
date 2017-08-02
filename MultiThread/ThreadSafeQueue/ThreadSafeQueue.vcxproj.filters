@@ -30,6 +30,9 @@
     <ClInclude Include="threadsafe_queue\BlockingQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="threadsafe_queue\BoundBlockingQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
