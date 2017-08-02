@@ -31,7 +31,7 @@ public:
 	void Take(T &t)
 	{
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty(); });
+		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty() || IsNeedStop(); });
 		if (!IsNeedStop()){
 			t = m_Queue.front();
 			m_Queue.pop_front();
@@ -42,7 +42,7 @@ public:
 	{
 		std::shared_ptr<T> tElementPtr;
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty(); });
+		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty() || IsNeedStop(); });
 		if (!IsNeedStop()){
 			tElementPtr = std::make_shared<T>(m_Queue.front());
 			m_Queue.pop_front();
