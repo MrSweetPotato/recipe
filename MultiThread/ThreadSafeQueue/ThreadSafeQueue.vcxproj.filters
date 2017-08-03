@@ -42,13 +42,13 @@
     <ClInclude Include="base\BoundBlockingQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base\CounDownLatch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="base\nocopyable.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="base\threadpool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="base\CounDownLatch.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,10 +62,10 @@
     <ClCompile Include="threadsafe_queue\CounDownLatch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base\CounDownLatch.cpp">
+    <ClCompile Include="base\threadpool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base\threadpool.cpp">
+    <ClCompile Include="base\CounDownLatch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
