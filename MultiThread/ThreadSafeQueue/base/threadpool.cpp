@@ -44,7 +44,7 @@ void CThreadPool::Run(Task &t)
 
 void CThreadPool::StartOnce(void)
 {
-	for (auto num = 0; num < m_ThreadSize; num++){
+	for (uInt num = 0; num < m_ThreadSize; num++){
 		ThreadPtr thread(new std::thread(std::bind(&CThreadPool::RunInThread, this)));
 		m_ThreadIdVec.push_back(thread->get_id());
 		m_ThreadVec.push_back(std::move(thread));
