@@ -85,6 +85,7 @@
     <ClInclude Include="threadsafe_queue\BlockingQueue.h" />
     <ClInclude Include="threadsafe_queue\nocopyable.h" />
     <ClInclude Include="threadsafe_queue\BoundBlockingQueue.h" />
+    <ClInclude Include="threadsafe_queue\CounDownLatch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -92,6 +93,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ThreadSafeQueue.cpp" />
+    <ClCompile Include="threadsafe_queue\CounDownLatch.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
