@@ -7,6 +7,7 @@
 #include <memory>
 #include "BlockingQueue.h"
 #include "BoundBlockingQueue.h"
+#include "WeakCallback.h"
 
 void BlockingQueueTestStop(void)
 {
@@ -43,11 +44,37 @@ void BoundBlockingQueue(void)
 
 }
 
+class CWeakCallbackTest
+{
+public:
+	void Print(int a, int b)
+	{
+		std::cout << "arg1 : " << a
+			<<",arg2 : "<<b<< std::endl;
+	}
+
+};
+
+typedef void (CWeakCallbackTest::*pFunction)(int a, int b);
+
+void WeakCallbackTest(void)
+{
+	std::cout << "begin weakcallback test" << std::endl;
+	int a = 1, b = 2;
+	std::shared_ptr<CWeakCallbackTest> object(new CWeakCallbackTest);
+
+	CWeakCallback<CWeakCallbackTest, int, int>  weakcallbackobject = makeweakcallback(object, &CWeakCallbackTest::Print);
+	weakcallbackobject(std::move(a), std::move(b));
+
+	std::cout << "end of weakcallback test" << std::endl;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	BlockingQueueTestStop();
 	BlockingQueueTestPut();
 	BoundBlockingQueue();
+	WeakCallbackTest();
 	system("pause");
 	return 0;
 }
