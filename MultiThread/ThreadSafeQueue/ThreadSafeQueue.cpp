@@ -1,6 +1,9 @@
 // ThreadSafeQueue.cpp : 定义控制台应用程序的入口点。
 //
 
+#define CATCH_CONFIG_RUNNER
+#include "catch.hpp"
+
 #include "stdafx.h"
 #include <iostream>
 #include <future>
@@ -8,6 +11,41 @@
 #include "BlockingQueue.h"
 #include "BoundBlockingQueue.h"
 #include "WeakCallback.h"
+
+
+
+TEST_CASE("vectors can be sized and resized", "[vector]") {
+
+	std::vector<int> v(5);
+
+	REQUIRE(v.size() == 5);
+	REQUIRE(v.capacity() >= 5);
+
+	SECTION("resizing bigger changes size and capacity") {
+		v.resize(10);
+
+		REQUIRE(v.size() == 10);
+		REQUIRE(v.capacity() >= 10);
+	}
+	SECTION("resizing smaller changes size but not capacity") {
+		v.resize(0);
+
+		REQUIRE(v.size() == 0);
+		REQUIRE(v.capacity() >= 5);
+	}
+	SECTION("reserving bigger changes capacity but not size") {
+		v.reserve(10);
+
+		REQUIRE(v.size() == 5);
+		REQUIRE(v.capacity() >= 10);
+	}
+	SECTION("reserving smaller does not change size or capacity") {
+		v.reserve(0);
+
+		REQUIRE(v.size() == 5);
+		REQUIRE(v.capacity() >= 5);
+	}
+}
 
 void BlockingQueueTestStop(void)
 {
@@ -41,7 +79,6 @@ void BoundBlockingQueue(void)
 	
 	std::cout << "BoundBlockingQueue's size is:" << BoundQueue.Size() << std::endl
 		<< "Data take from queue is:" << *(future.get()) << std::endl;
-
 }
 
 class CWeakCallbackTest
@@ -71,11 +108,16 @@ void WeakCallbackTest(void)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BlockingQueueTestStop();
-	BlockingQueueTestPut();
-	BoundBlockingQueue();
+	//BlockingQueueTestStop();
+	//BlockingQueueTestPut();
+	//BoundBlockingQueue();
+
 	WeakCallbackTest();
+	int result = Catch::Session().run(argc, argv);
+
+	// global clean-up...
+
 	system("pause");
-	return 0;
+	return (result < 0xff ? result : 0xff);
 }
 
