@@ -22,8 +22,8 @@ public:
 	void Put(const T& t)
 	{
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotFull.wait(lock,[this](){return !IsFull() || IsNeedStop(); });
-		if (!IsNeedStop()){
+		m_NotFull.wait(lock,[this](){return !IsFull() || IsStop(); });
+		if (!IsStop()){
 			m_Queue.push_back(t);
 			m_NotEmpty.notify_one();
 		}
@@ -32,18 +32,18 @@ public:
 	void Put(T &&t)
 	{
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotFull.wait(lock,[this](){return !IsFull() || IsNeedStop(); });
-		if (!IsNeedStop()){
+		m_NotFull.wait(lock,[this](){return !IsFull() || IsStop(); });
+		if (!IsStop()){
 			m_Queue.push_back(std::forward<T>(t));
 			m_NotEmpty.notify_one();
 		}
 	}
 
-	void Take(T *t)
+	void Take(T &t)
 	{
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotEmpty.wait(lock,[this](){return !IsEmpty() || IsNeedStop(); });
-		if (!IsNeedStop()){
+		m_NotEmpty.wait(lock,[this](){return !IsEmpty() || IsStop(); });
+		if (!IsStop()){
 			t = m_Queue.front();
 			m_Queue.pop_front();
 			m_NotFull.notify_one();
@@ -54,8 +54,8 @@ public:
 	{
 		std::shared_ptr<T> tValPtr;
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotEmpty.wait(lock,[this](){return !IsEmpty() || IsNeedStop(); });
-		if (!IsNeedStop()){
+		m_NotEmpty.wait(lock,[this](){return !IsEmpty() || IsStop(); });
+		if (!IsStop()){
 			tValPtr = std::make_shared<T>(m_Queue.front());
 			m_Queue.pop_front();
 			m_NotFull.notify_one();
@@ -65,9 +65,7 @@ public:
 
 	void Stop(void)
 	{
-		if (!IsNeedStop()){
-			StopOnce();
-		}
+		std::call_once(m_StopOnceFlag, [this](){StopOnce(); });
 	}
 
 	size_t Size(void)
@@ -76,12 +74,13 @@ public:
 		return m_Queue.size();
 	}
 
-private:
+	bool IsStop(void) const{ return m_StopFlag; }
+
 	bool IsFull(void) const{ return m_MaxSize == m_Queue.size(); }
 
 	bool IsEmpty(void) const{ return m_Queue.empty(); }
 
-	bool IsNeedStop(void) const{ return m_StopFlag; }
+private:
 
 	void StopOnce(void)
 	{
@@ -95,5 +94,6 @@ private:
 	std::deque<T>				m_Queue;
 	size_t						m_MaxSize;
 	bool						m_StopFlag;
+	std::once_flag				m_StopOnceFlag;
 };
 #endif//BOUNDBLOCKINGQUEUE_H_
