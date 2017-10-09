@@ -3,8 +3,6 @@
 #include <typeindex>
 #include <memory>
 
-
-
 class Any
 {
 	class CPlaceHolder;
@@ -75,20 +73,6 @@ private:
 		virtual ~CPlaceHolder(){}
 		virtual CPlaceHolderUniquePtr Clone(void) const = 0;
 	};
-
-	//template<typename ValueType>
-	//class CHolder : public CPlaceHolder {
-	//public:
-	//	CHolder(const ValueType& value)
-	//		: m_Context(value) {}
-
-	//	virtual CPlaceHolderUniquePtr Clone(void) const override
-	//	{
-	//		return CPlaceHolderUniquePtr(new CHolder<ValueType>(m_Context));
-	//	}
-
-	//	ValueType m_Context;
-	//};
 
 	template<typename T>
 	class CHolder : public CPlaceHolder
