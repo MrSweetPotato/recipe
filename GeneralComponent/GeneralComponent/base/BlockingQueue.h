@@ -31,8 +31,8 @@ public:
 	void Take(T &t)
 	{
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty() || IsNeedStop(); });
-		if (!IsNeedStop()){
+		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty() || IsStop(); });
+		if (!IsStop()){
 			t = m_Queue.front();
 			m_Queue.pop_front();
 		}
@@ -42,8 +42,8 @@ public:
 	{
 		std::shared_ptr<T> tElementPtr;
 		std::unique_lock<std::mutex> lock(m_Mutex);
-		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty() || IsNeedStop(); });
-		if (!IsNeedStop()){
+		m_NotEmpty.wait(lock, [this](){return !m_Queue.empty() || IsStop(); });
+		if (!IsStop()){
 			tElementPtr = std::make_shared<T>(m_Queue.front());
 			m_Queue.pop_front();
 		}
@@ -52,9 +52,7 @@ public:
 	
 	void Stop(void)
 	{
-		if (!IsNeedStop()){
-			StopOnce();
-		}
+		std::call_once(m_StopOnceFlag, [this](){StopOnce(); });
 	}
 
 	size_t Size(void)
@@ -63,9 +61,10 @@ public:
 		return m_Queue.size();
 	}
 
-private:
-	bool IsNeedStop(void) const { return m_StopFlag; }
+	bool IsStop(void) const { return m_StopFlag; }
 
+private:
+	
 	void StopOnce(void)
 	{
 		m_StopFlag = true;
@@ -76,6 +75,7 @@ private:
 	std::mutex				m_Mutex;
 	std::deque<T>			m_Queue;
 	bool					m_StopFlag;
+	std::once_flag			m_StopOnceFlag;
 };
 
 #endif//THREADSAFE_QUEUE_H_
