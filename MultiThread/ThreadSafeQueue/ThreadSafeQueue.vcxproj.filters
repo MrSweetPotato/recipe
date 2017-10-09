@@ -50,13 +50,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadSafeQueue.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="base\threadpool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="base\CounDownLatch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralComponentTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

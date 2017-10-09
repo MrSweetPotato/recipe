@@ -14,6 +14,7 @@
     <ProjectGuid>{BD1B29F8-4520-43CC-91AC-FE9C8B3E5A5A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ThreadSafeQueue</RootNamespace>
+    <ProjectName>General_Component</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -98,7 +99,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ThreadSafeQueue.cpp" />
+    <ClCompile Include="GeneralComponentTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
