@@ -6,28 +6,28 @@
 class CCoundownLatch : public CNocopyable
 {
 public:
-	explicit CCoundownLatch(size_t pCount);
+	explicit CCoundownLatch(int pCount);
 	
 	virtual ~CCoundownLatch();
 
 	void Wait(void);
 
-	void CoundDown(void);
+	void CountDown(void);
 
 	void CCoundownLatch::Stop(void)
 	{
 		m_StopFlag = true;
 	}
 
-	size_t GetCount(void);
+	int GetCount(void);
+
+	bool IsStop(void) const { return m_StopFlag; }
 
 private:
 
-	bool IsNeedStop(void) const { return m_StopFlag; }
-
 	std::condition_variable m_FinishCond;
 	std::mutex				m_Mutex;
-	size_t					m_Count;
+	int						m_Count;
 	bool					m_StopFlag;
 };
 
