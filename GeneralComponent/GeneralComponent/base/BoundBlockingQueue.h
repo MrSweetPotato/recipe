@@ -75,6 +75,7 @@ public:
 		std::lock_guard<std::mutex> lock(m_Mutex);
 		return m_Queue.size();
 	}
+
 private:
 	bool IsFull(void) const{ return m_MaxSize == m_Queue.size(); }
 
@@ -84,9 +85,9 @@ private:
 
 	void StopOnce(void)
 	{
+		m_StopFlag = true;
 		m_NotEmpty.notify_all();
 		m_NotFull.notify_all();
-		m_StopFlag = true;
 	}
 	std::mutex					m_Mutex;
 	std::condition_variable		m_NotEmpty;
