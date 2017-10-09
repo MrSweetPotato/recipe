@@ -1,4 +1,4 @@
-#include "CounDownLatch.h"
+#include "CountDownLatch.h"
 CCoundownLatch::CCoundownLatch(size_t pCount)
 :m_Count(pCount)
 , m_StopFlag(false)
