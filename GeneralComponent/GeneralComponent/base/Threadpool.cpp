@@ -1,9 +1,9 @@
-#include "threadpool.h"
+#include "Threadpool.h"
 
 CThreadPool::CThreadPool(uInt pSize, Task pInitialTask)
 :m_ThreadSize(pSize)
 , m_InitialTask(pInitialTask)
-, m_bRunning(false)
+, m_bRunning(true)
 {
 }
 
@@ -24,22 +24,22 @@ void CThreadPool::Stop(void)
 
 void CThreadPool::Run(Task &&t)
 {
-	if (m_TaskBlockQueue.Size() == 0){
-		t();
-	}
-	else{
+	//if (m_TaskBlockQueue.Size() == 0){
+	//	t();
+	//}
+	//else{
 		m_TaskBlockQueue.Put(std::move(t));
-	}
+	//}
 }
 
 void CThreadPool::Run(Task &t)
 {
-	if (m_TaskBlockQueue.Size() == 0){
-		t();
-	}
-	else{
+	//if (m_TaskBlockQueue.Size() == 0){
+	//	t();
+	//}
+	//else{
 		m_TaskBlockQueue.Put(t);
-	}
+	//}
 }
 
 void CThreadPool::StartOnce(void)
@@ -71,7 +71,7 @@ void CThreadPool::RunInThread(void)
 	while (true){
 		Task task;
 		m_TaskBlockQueue.Take(task);
-		if (IsNeedStop()){
+		if (IsStop()){
 			break;
 		}
 		task();
