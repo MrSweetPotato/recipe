@@ -29,7 +29,10 @@ public:
 
 	void Run(Task &t);
 
+	bool IsStop(void) const { return m_bRunning == false; }
+
 private:
+
 	void StartOnce(void);
 
 	void StopOnce(void);
@@ -41,8 +44,6 @@ private:
 		m_bRunning = false;
 		m_TaskBlockQueue.Stop();
 	}
-
-	bool IsNeedStop(void) const{return m_bRunning == false;}
 
 	Task						m_InitialTask;
 	TaskQueue					m_TaskBlockQueue;
