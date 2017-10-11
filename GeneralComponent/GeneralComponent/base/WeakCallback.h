@@ -36,7 +36,7 @@ CWeakCallback<CLASS, ARGS...> makeweakcallback(const std::shared_ptr<CLASS> &pOb
 }
 
 template<typename CLASS, typename... ARGS>
-CWeakCallback<CLASS, ARGS...> makeWeakCallback(const std::shared_ptr<CLASS>& object,
+CWeakCallback<CLASS, ARGS...> makeweakcallback(const std::shared_ptr<CLASS>& object,
 	void (CLASS::*function)(ARGS...) const)
 {
 	return CWeakCallback<CLASS, ARGS...>(object, function);
