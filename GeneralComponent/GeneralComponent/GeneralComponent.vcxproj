@@ -52,7 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\base;.\ThirdPart\Catch\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\component;.\ThirdPart\Catch\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -88,12 +88,21 @@
     <ClInclude Include="base\nocopyable.h" />
     <ClInclude Include="base\threadpool.h" />
     <ClInclude Include="base\WeakCallback.h" />
+    <ClInclude Include="component\any.h" />
+    <ClInclude Include="component\BlockingQueue.h" />
+    <ClInclude Include="component\BoundBlockingQueue.h" />
+    <ClInclude Include="component\CountDownLatch.h" />
+    <ClInclude Include="component\nocopyable.h" />
+    <ClInclude Include="component\threadpool.h" />
+    <ClInclude Include="component\WeakCallback.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base\CountDownLatch.cpp" />
     <ClCompile Include="base\threadpool.cpp" />
+    <ClCompile Include="component\CountDownLatch.cpp" />
+    <ClCompile Include="component\threadpool.cpp" />
     <ClCompile Include="GeneralComponent.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
