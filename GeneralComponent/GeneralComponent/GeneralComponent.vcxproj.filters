@@ -45,6 +45,9 @@
     <ClInclude Include="base\WeakCallback.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="base\CountDownLatch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -53,10 +56,10 @@
     <ClCompile Include="GeneralComponent.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base\CounDownLatch.cpp">
+    <ClCompile Include="base\threadpool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base\threadpool.cpp">
+    <ClCompile Include="base\CountDownLatch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

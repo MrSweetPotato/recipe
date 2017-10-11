@@ -52,7 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\base;.\ThirdPart\Catch\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,6 +84,7 @@
     <ClInclude Include="base\BlockingQueue.h" />
     <ClInclude Include="base\BoundBlockingQueue.h" />
     <ClInclude Include="base\CounDownLatch.h" />
+    <ClInclude Include="base\CountDownLatch.h" />
     <ClInclude Include="base\nocopyable.h" />
     <ClInclude Include="base\threadpool.h" />
     <ClInclude Include="base\WeakCallback.h" />
@@ -91,7 +92,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base\CounDownLatch.cpp" />
+    <ClCompile Include="base\CountDownLatch.cpp" />
     <ClCompile Include="base\threadpool.cpp" />
     <ClCompile Include="GeneralComponent.cpp" />
     <ClCompile Include="stdafx.cpp">
