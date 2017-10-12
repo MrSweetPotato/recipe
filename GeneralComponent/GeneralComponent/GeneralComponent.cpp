@@ -24,7 +24,6 @@ public:
 		printf("this is weakcallback function");
 	}
 };
-
 TEST_CASE("class any test")
 {
 	Any any1;

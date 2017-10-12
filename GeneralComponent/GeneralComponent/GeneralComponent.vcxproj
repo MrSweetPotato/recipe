@@ -80,14 +80,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="base\any.h" />
-    <ClInclude Include="base\BlockingQueue.h" />
-    <ClInclude Include="base\BoundBlockingQueue.h" />
-    <ClInclude Include="base\CounDownLatch.h" />
-    <ClInclude Include="base\CountDownLatch.h" />
-    <ClInclude Include="base\nocopyable.h" />
-    <ClInclude Include="base\threadpool.h" />
-    <ClInclude Include="base\WeakCallback.h" />
     <ClInclude Include="component\any.h" />
     <ClInclude Include="component\BlockingQueue.h" />
     <ClInclude Include="component\BoundBlockingQueue.h" />
@@ -99,8 +91,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base\CountDownLatch.cpp" />
-    <ClCompile Include="base\threadpool.cpp" />
     <ClCompile Include="component\CountDownLatch.cpp" />
     <ClCompile Include="component\threadpool.cpp" />
     <ClCompile Include="GeneralComponent.cpp" />
