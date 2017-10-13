@@ -24,30 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base\any.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\BlockingQueue.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\BoundBlockingQueue.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\CounDownLatch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\nocopyable.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\threadpool.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\WeakCallback.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base\CountDownLatch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="component\any.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -69,18 +45,15 @@
     <ClInclude Include="component\WeakCallback.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="base\function_traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GeneralComponent.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="base\threadpool.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="base\CountDownLatch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="component\CountDownLatch.cpp">

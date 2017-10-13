@@ -80,6 +80,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base\function_traits.h" />
     <ClInclude Include="component\any.h" />
     <ClInclude Include="component\BlockingQueue.h" />
     <ClInclude Include="component\BoundBlockingQueue.h" />
